@@ -18,7 +18,11 @@
                 <p class="text-muted">The recent message.</p>
                 <div class="messages">
                     <div class="message">
-                        <p><b>RryLee: </b>hi!</p>
+                        <script id="messageTemplate" type="app/template">
+                            <div class="message">
+                                <p><b>{{ name }}: </b>{{ message }}</p>
+                            </div>
+                        </script>
                     </div>
                 </div>
             </div>

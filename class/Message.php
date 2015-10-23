@@ -18,4 +18,12 @@ class Message
 
         return (bool) $this->pdo->lastInsertId();
     }
+
+    public function getRecentMessages($count = 10)
+    {
+        $sql = "select name, message from messages order by id desc limit {$count}";
+        $stmt = $this->pdo->query($sql);
+
+        return $stmt->fetchAll();
+    }
 }

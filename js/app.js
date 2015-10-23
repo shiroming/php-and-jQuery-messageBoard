@@ -1,6 +1,26 @@
 (function($) {
     var _name = $('#name');
     var _message = $('#message');
+    var messages;
+    var html = '';
+    var template = $.trim($('#messageTemplate').html());
+
+    $.ajax({
+        url: 'api/messages.php',
+        type: 'get',
+        data: {'token': $('#token').val()},
+        dataType: 'json',
+        success: function(data) {
+            messages = data;
+
+            $.each(messages, function(index, obj) {
+                html += template.replace(/{{ name }}/ig, obj.name)
+                                .replace(/{{ message }}/ig, obj.message);
+            });
+
+            $('.messages').append(html);
+        }
+    });
 
     $('form').on('submit', function(e) {
         e.preventDefault();
