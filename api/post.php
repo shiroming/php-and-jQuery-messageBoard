@@ -1,11 +1,14 @@
 <?php
 
+session_start();
+
 header('Content-Type: application/json');
 
 require_once '../class/Message.php';
+require_once '../class/Token.php';
 require_once '../functions.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+if (checkPostIsValid()) {
     die('not access');
 }
 

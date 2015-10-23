@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+require_once 'class/Token.php';
+
+$token = Token::generate();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +38,7 @@
 
             <div class="col-sm-6">
                 <form action="api/post.php">
+                    <input type="hidden" id="token" name="token" value="<?= $token ?>">
                     <!-- Name field -->
                     <div class="form-group">
                         <label for="name">Name</label>
